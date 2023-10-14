@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>blog creator</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Style for the input elements */
+        .input-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+        }
+        /* Style for the preview area */
+        #preview {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Page Editor</h1>
+
+        <div class="input-group">
+            <label for="text">Text Content</label>
+            <textarea id="text" rows="4"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label for="image">Image URL</label>
+            <input type="text" id="image" placeholder="Enter image URL">
+        </div>
+
+        <div class="input-group">
+            <label for="video">Video URL</label>
+            <input type="text" id="video" placeholder="Enter video URL">
+        </div>
+
+        <button onclick="updatePreview()">Update Preview</button>
+
+        <div class="input-group">
+            <h2>Preview:</h2>
+            <div id="preview"></div>
+        </div>
+    </div>
+
+    <script>
+        function updatePreview() {
+            const text = document.getElementById('text').value;
+            const image = document.getElementById('image').value;
+            const video = document.getElementById('video').value;
+
+            const preview = document.getElementById('preview');
+            preview.innerHTML = '';
+
+            if (text) {
+                const textElement = document.createElement('p');
+                textElement.textContent = text;
+                preview.appendChild(textElement);
+            }
+
+            if (image) {
+                const imageElement = document.createElement('img');
+                imageElement.src = image;
+                preview.appendChild(imageElement);
+            }
+
+            if (video) {
+                const videoElement = document.createElement('iframe');
+                videoElement.src = video;
+                videoElement.width = "560";
+                videoElement.height = "315";
+                preview.appendChild(videoElement);
+            }
+        }
+    </script>
+</body>
+</html>
